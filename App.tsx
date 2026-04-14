@@ -206,10 +206,17 @@ function SettingsTab() {
           <Text style={{ color: B.tl, fontSize: 14, fontWeight: '700' }}>$4.99/mo or $39.99/yr</Text>
         </View>
       </Card>
-      <Card>
+     <Card>
         <Text style={s.sec}>LEGAL</Text>
-        {['Privacy Policy', 'Terms of Service', 'Data Deletion Request', 'Manage Subscriptions'].map((x, i) => (
-          <View key={i} style={[s.row, i < 3 && s.rowB]}><Text style={{ color: B.tl, fontSize: 13 }}>{x}</Text></View>
+        {[
+          { label: 'Privacy Policy', url: 'https://trkr.fyi/privacy-policy.html' },
+          { label: 'Terms of Service', url: 'https://trkr.fyi/terms-of-service.html' },
+          { label: 'Data Deletion Request', url: 'https://trkr.fyi/data-deletion.html' },
+          { label: 'Manage Subscriptions', url: 'https://apps.apple.com/account/subscriptions' },
+        ].map((x, i) => (
+          <TouchableOpacity key={i} style={[s.row, i < 3 && s.rowB]} onPress={() => Linking.openURL(x.url)}>
+            <Text style={{ color: B.tl, fontSize: 13 }}>{x.label}</Text>
+          </TouchableOpacity>
         ))}
       </Card>
     </View>
