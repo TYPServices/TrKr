@@ -17,8 +17,6 @@ import { useBudget } from './src/hooks/useBudget';
 import { useDividends } from './src/hooks/useDividends';
 import { useProfile } from './src/hooks/useProfile';
 
-initSentry();
-
 const B = {
   teal: '#2d8a8a', tl: '#5ec6c6', td: '#1a6b6b',
   bg: '#0b1117', cd: '#111820', bd: '#1a2430',
@@ -36,6 +34,7 @@ export default function App() {
   const [tab, setTab] = useState('home');
 
   useEffect(() => {
+    initSentry();
     let settled = false;
 
     // 5-second timeout so a slow network doesn't hang the loading screen forever
