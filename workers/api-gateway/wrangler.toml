@@ -1,0 +1,13 @@
+name = "trkr-api-gateway"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Set secrets (never commit real values):
+#   wrangler secret put SUPABASE_URL
+#   wrangler secret put SUPABASE_ANON_KEY
+#
+# After deploying, update EXPO_PUBLIC_SUPABASE_URL in your .env to:
+#   https://trkr-api-gateway.<your-account>.workers.dev
+
+[observability]
+enabled = true

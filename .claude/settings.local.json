@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const p=require\\('/c/Users/Neil.Makhija/OneDrive - GEP/personal/TrKr/node_modules/@tanstack/react-query/package.json'\\); console.log\\('rq version:', p.version\\)\")",
+      "Bash(grep -E \"^jest-expo$|^babel-jest$|^@babel$\")",
+      "Bash(grep \"^jest$\")",
+      "Bash(grep -E \"^react$|^react-dom$\")",
+      "Bash(git -C \"C:/Users/Neil.Makhija/OneDrive - GEP/personal/TrKr\" log --oneline -10)",
+      "Bash(git -C \"C:/Users/Neil.Makhija/OneDrive - GEP/personal/TrKr\" log --oneline -20)",
+      "Bash(grep -v \"^total\\\\|^d.*\\\\.$\\\\|^d.*\\\\.\\\\.$\")",
+      "Bash(grep -E \"^@sentry$|sentry\")",
+      "Bash(grep -E \"^react-test-renderer$\")",
+      "Bash(grep -E \"^ts-jest$|^@types/jest$\")",
+      "Bash(npx expo:*)",
+      "Bash(npm install:*)",
+      "Bash(npm test:*)"
+    ]
+  }
+}
