@@ -28,7 +28,6 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@sentry/react-native",
       "expo-web-browser",
       "expo-apple-authentication"
     ]
