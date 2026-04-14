@@ -36,15 +36,27 @@ export default function App() {
   const [tab, setTab] = useState('home');
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setAuthLoading(false);
-    });
+    let settled = false;
+
+    // 5-second timeout so a slow network doesn't hang the loading screen forever
+    const timer = setTimeout(() => {
+      if (!settled) { settled = true; setAuthLoading(false); }
+    }, 5000);
+
+    supabase.auth.getSession()
+      .then(({ data: { session } }) => {
+        if (!settled) { settled = true; clearTimeout(timer); setSession(session); setAuthLoading(false); }
+      })
+      .catch(() => {
+        if (!settled) { settled = true; clearTimeout(timer); setAuthLoading(false); }
+      });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
-      if (!newSession) queryClient.clear(); // Clear cache on sign-out
+      if (!newSession) queryClient.clear();
     });
-    return () => subscription.unsubscribe();
+
+    return () => { subscription.unsubscribe(); clearTimeout(timer); };
   }, []);
 
   const TABS = [
